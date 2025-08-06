@@ -1,0 +1,11 @@
+server:
+  port: ${SERVER_PORT}
+
+database:
+  driver: "postgres"
+  host: ${DB_HOST}
+  port: 5432
+  user: ${DB_USERNAME}
+  password: ${DB_PASSWORD}
+  name: ${DB_NAME}
+  sslmode: "disable"
