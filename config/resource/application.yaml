@@ -1,5 +1,6 @@
 server:
   port: ${SERVER_PORT}
+  allowOrigin: ${ALLOW_ORIGIN}
 
 database:
   driver: "postgres"
@@ -9,3 +10,6 @@ database:
   password: ${DB_PASSWORD}
   name: ${DB_NAME}
   sslmode: "disable"
+  maxIdle: 10
+  maxConn: 25
+  maxLife: 1

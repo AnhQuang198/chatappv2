@@ -1,14 +1,22 @@
 package middleware
 
 import (
+	"chatappv2/config"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"log"
+	"strings"
 	"time"
 )
 
 func CORSMiddleware() gin.HandlerFunc {
+	cfg, err := config.LoadApplicationConfig()
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
+	origins := strings.Split(cfg.Server.AllowOrigin, ",")
 	corsConfig := cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowOrigins:     origins,
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},
